@@ -6,5 +6,26 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(purrr)
+library(png)
+library(janitor)
+library(googlesheets4)
 ```
+
+
+```{r coldcall function}
+
+my_cold_call <- function() {
+    sheets_deauth()
+    x <- read_sheet("1LtupNx8yBeJzK6UyGkZ5u-aUAPzU90K9C4r2RTJwWqg") %>% 
+      select(Student) %>% 
+      sample_n(1) %>% 
+      pull(Student) 
+      
+    x
+}
+
+```
+
